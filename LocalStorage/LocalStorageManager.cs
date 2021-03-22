@@ -4,7 +4,9 @@ using System.Threading.Tasks;
 
 namespace Energetic.Clients.Xamarin.LocalStorage
 {
-    ///TODO: Implement this
+    /// <summary>
+    /// A local storage manager for Xamarin clients.
+    /// </summary>
     public class LocalStorageManager :ILocalStorageManager
     {
         public LocalStorageManager() { }
