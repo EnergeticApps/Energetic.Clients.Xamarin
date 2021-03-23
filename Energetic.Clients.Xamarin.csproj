@@ -28,14 +28,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Energetic.Clients" Version="0.0.2-alpha" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="3.2.1" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
 		<PackageReference Include="Xamarin.Essentials" Version="1.6.0" />
 		<PackageReference Include="Xamarin.Forms" Version="5.0.0.1931" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\Energetic.Clients\Energetic.Clients.csproj" />
 	</ItemGroup>
 
 </Project>
