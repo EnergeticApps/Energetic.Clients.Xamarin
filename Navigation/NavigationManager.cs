@@ -13,12 +13,10 @@ namespace Energetic.Clients.Xamarin.Navigation
     /// </summary>
     public class NavigationManager : NavigationManagerBase
     {
-        private readonly Shell _shell;
 
-        public NavigationManager(Shell shell, IOptions<OidcProviderOptions> optionsAccessor) :
+        public NavigationManager(IOptions<OidcProviderOptions> optionsAccessor) :
             base(optionsAccessor)
         {
-            _shell = shell ?? throw new ArgumentNullException(nameof(shell));
         }
 
         public override string Location => throw new NotImplementedException();
@@ -51,14 +49,34 @@ namespace Energetic.Clients.Xamarin.Navigation
             await NavigateToPageAsync(MakeAuthUrl("{0}/connect/userinfo"));
         }
 
+
+        /// <summary>
+        /// Navigates to the page in the <paramref name="url"/>.
+        /// </summary>
+        /// <param name="url">A URL (relative or absolute) to the page you want the user to go to.</param>
+        /// <remarks>
+        /// To go to the root of the app, use double forward slash "//".
+        /// To go up a level, use "../"
+        /// </remarks>
         public override async Task NavigateToPageAsync(string url)
         {
-            await _shell.GoToAsync(url);
+            await Shell.Current.GoToAsync(url);
         }
 
+        /// <summary>
+        /// Navigates to the page in the <paramref name="url"/> passing the parameter <paramref name="parameterKey"/> with a
+        /// value of <paramref name="parameterValue"/>.
+        /// </summary>
+        /// <param name="url">A URL (relative or absolute) to the page you want the user to go to.</param>
+        /// <param name="parameterKey">The name of the parameter to pass in the URL query string.</param>
+        /// <param name="parameterValue">The value of the parameter passed in the URL query string.</param>
+        /// <remarks>
+        /// To go to the root of the app, use double forward slash "//".
+        /// To go up a level, use "../"
+        /// </remarks>
         public override async Task NavigateToPageAsync(string url, string parameterKey, string parameterValue)
         {
-            await _shell.GoToAsync($"{url}?{parameterKey}={parameterValue}");
+            await Shell.Current.GoToAsync($"{url}?{parameterKey}={parameterValue}");
         }
 
         public override async Task NavigateToRegisterAsync()
