@@ -36,17 +36,17 @@ namespace Energetic.Clients.Xamarin.Navigation
         {
             string pattern = "{0}/account/login?returnUrl={1}";
             string returnUrl = Uri.EscapeDataString(Location);
-            await NavigateToPageAsync(MakeAuthUrl(pattern, returnUrl));
+            await NavigateExternalAsync(MakeAuthUrl(pattern, returnUrl));
         }
 
         public override async Task NavigateToLogOutAsync()
         {
-            await NavigateToPageAsync(MakeAuthUrl("{0}/account/logout"));
+            await NavigateExternalAsync(MakeAuthUrl("{0}/account/logout"));
         }
 
         public override async Task NavigateToManageAccountAsync()
         {
-            await NavigateToPageAsync(MakeAuthUrl("{0}/connect/userinfo"));
+            await NavigateExternalAsync(MakeAuthUrl("{0}/connect/userinfo"));
         }
 
 
